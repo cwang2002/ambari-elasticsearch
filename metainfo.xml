@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<metainfo>
+	<schemaVersion>2.0</schemaVersion>
+	<services>
+		<service>
+			<!-- Internal name for service (must be unique) -->
+			<name>SEARCH</name>
+			<displayName>Elasticsearch</displayName>
+			<comment></comment>
+			<!-- Version of component -->
+			<version>2.3</version>
+			<requiredServices>
+				<service>DOCKER</service>
+			</requiredServices>
+			<components>
+				<component>
+					<name>ELASTICSEARCH</name>
+					<displayName>Elasticsearch</displayName>
+					<category>MASTER</category>
+					<!-- how many of these components are allowed in a cluster -->
+					<cardinality>1+</cardinality>
+					<commandScript>
+						<script>scripts/master.py</script>
+						<scriptType>PYTHON</scriptType>
+						<timeout>5000</timeout>
+					</commandScript>
+				</component>
+			</components>
+			<osSpecifics>
+				<osSpecific>
+					<osFamily>any</osFamily>
+				</osSpecific>
+			</osSpecifics>
+			<configuration-dependencies>
+				<config-type>elasticsearch-config</config-type>
+			</configuration-dependencies>
+		</service>
+	</services>
+</metainfo>
